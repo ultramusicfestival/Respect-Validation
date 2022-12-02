@@ -156,6 +156,9 @@ final class Factory
         $ruleName = $reflection->getShortName();
         $params = ['input' => $input] + $extraParams + $this->extractPropertiesValues($validatable, $reflection);
         $id = lcfirst($ruleName);
+        if ($validatable->getId() !== null) {
+            $id = $validatable->getId();
+        }
         if ($validatable->getName() !== null) {
             $params['name'] = $validatable->getName();
         }

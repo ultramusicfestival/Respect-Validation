@@ -28,6 +28,11 @@ abstract class AbstractRule implements Validatable
     /**
      * @var string|null
      */
+    protected $id;
+    
+    /**
+     * @var string|null
+     */
     protected $name;
 
     /**
@@ -58,6 +63,14 @@ abstract class AbstractRule implements Validatable
     /**
      * {@inheritDoc}
      */
+    public function getId(): ?string
+    {
+        return $this->id;
+    }    
+
+    /**
+     * {@inheritDoc}
+     */
     public function getName(): ?string
     {
         return $this->name;
@@ -69,6 +82,16 @@ abstract class AbstractRule implements Validatable
     public function reportError($input, array $extraParams = []): ValidationException
     {
         return Factory::getDefaultInstance()->exception($this, $input, $extraParams);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setId(string $id): Validatable
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     /**

@@ -31,6 +31,8 @@ interface Validatable
      * @param mixed $input
      */
     public function check($input): void;
+    
+    public function getId(): ?string;
 
     public function getName(): ?string;
 
@@ -39,6 +41,8 @@ interface Validatable
      * @param mixed[] $extraParameters
      */
     public function reportError($input, array $extraParameters = []): ValidationException;
+    
+    public function setId(string $id): Validatable;
 
     public function setName(string $name): Validatable;
 
