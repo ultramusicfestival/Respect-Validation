@@ -50,9 +50,9 @@ abstract class AbstractComposite extends AbstractRule
         $parentName = $this->getName();
         foreach ($this->rules as $rule) {
             $ruleName = $rule->getName();
-            if ($ruleName && $parentName !== $ruleName) {
-                continue;
-            }
+//            if ($ruleName && $parentName !== $ruleName) {
+//                continue;
+//            }
 
             $rule->setName($name);
         }
