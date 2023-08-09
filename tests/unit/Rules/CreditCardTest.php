@@ -3,7 +3,7 @@
 /*
  * This file is part of Respect/Validation.
  *
- * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
@@ -25,6 +25,7 @@ use Respect\Validation\Test\RuleTestCase;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
+ * @author Rakshit Arora <rakshit087@gmail.com>
  */
 final class CreditCardTest extends RuleTestCase
 {
@@ -34,7 +35,7 @@ final class CreditCardTest extends RuleTestCase
     public function itShouldThrowExceptionWhenCreditCardBrandIsNotValid(): void
     {
         $message = '"RespectCard" is not a valid credit card brand';
-        $message .= ' (Available: Any, American Express, Diners Club, Discover, JCB, MasterCard, Visa)';
+        $message .= ' (Available: Any, American Express, Diners Club, Discover, JCB, MasterCard, Visa, RuPay)';
 
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage($message);
@@ -54,6 +55,7 @@ final class CreditCardTest extends RuleTestCase
         $jcb = new CreditCard(CreditCard::JCB);
         $master = new CreditCard(CreditCard::MASTERCARD);
         $visa = new CreditCard(CreditCard::VISA);
+        $rupay = new CreditCard(CreditCard::RUPAY);
 
         return [
             [$general, 5555444433331111], // MasterCard 5 BIN Range
@@ -73,6 +75,8 @@ final class CreditCardTest extends RuleTestCase
             [$discover, '6011000990139424'],
             [$general, '3566002020360505'], // JBC
             [$jcb, '3566002020360505'],
+            [$general, '6522447005971501'], // RuPay
+            [$rupay, '6062973831636410'],
         ];
     }
 

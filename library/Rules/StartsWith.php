@@ -3,7 +3,7 @@
 /*
  * This file is part of Respect/Validation.
  *
- * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use function is_array;
-use function mb_detect_encoding;
 use function mb_stripos;
 use function mb_strpos;
 use function reset;
@@ -22,7 +21,7 @@ use function reset;
 /**
  * Validates whether the input starts with a given value.
  *
- * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Marcelo Araujo <msaraujo@php.net>
  */
@@ -68,7 +67,7 @@ final class StartsWith extends AbstractRule
             return reset($input) == $this->startValue;
         }
 
-        return mb_stripos($input, $this->startValue, 0, (string) mb_detect_encoding($input)) === 0;
+        return mb_stripos($input, $this->startValue) === 0;
     }
 
     /**
@@ -80,6 +79,6 @@ final class StartsWith extends AbstractRule
             return reset($input) === $this->startValue;
         }
 
-        return mb_strpos($input, $this->startValue, 0, (string) mb_detect_encoding($input)) === 0;
+        return mb_strpos($input, $this->startValue) === 0;
     }
 }

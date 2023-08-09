@@ -3,7 +3,7 @@
 /*
  * This file is part of Respect/Validation.
  *
- * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
@@ -92,6 +92,8 @@ final class PostalCodeTest extends RuleTestCase
             [new PostalCode('RS'), '24430'],
             [new PostalCode('GR'), '24430'],
             [new PostalCode('GR'), '244 30'],
+            [new PostalCode('KH'), '12080'],
+            [new PostalCode('KH'), '120802'],
         ];
     }
 
@@ -116,6 +118,7 @@ final class PostalCodeTest extends RuleTestCase
             [new PostalCode('KY'), 'KY4-2500'],
             [new PostalCode('AM'), '375010'],
             [new PostalCode('RS'), '244300'],
+            [new PostalCode('KH'), '1208'],
         ];
     }
 }

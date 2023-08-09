@@ -3,7 +3,7 @@
 /*
  * This file is part of Respect/Validation.
  *
- * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
@@ -27,6 +27,9 @@ use Respect\Validation\Test\TestCase;
 final class SubdivisionCodeTest extends TestCase
 {
     /**
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage "whatever" is not a supported country code
+     *
      * @test
      */
     public function shouldThrowsExceptionWhenInvalidFormat(): void
@@ -54,9 +57,11 @@ final class SubdivisionCodeTest extends TestCase
     public function providerForValidSubdivisionCodeInformation(): array
     {
         return [
+            ['AQ',  null],
             ['BR',  'SP'],
             ['MV',  '00'],
             ['US',  'CA'],
+            ['YT',  ''],
         ];
     }
 
@@ -81,8 +86,6 @@ final class SubdivisionCodeTest extends TestCase
             ['BR',  'CA'],
             ['MV',  0],
             ['US',  'CE'],
-            ['AQ',  null],
-            ['YT',  ''],
         ];
     }
 

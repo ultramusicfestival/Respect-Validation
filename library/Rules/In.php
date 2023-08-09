@@ -3,7 +3,7 @@
 /*
  * This file is part of Respect/Validation.
  *
- * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
@@ -15,14 +15,13 @@ namespace Respect\Validation\Rules;
 
 use function in_array;
 use function is_array;
-use function mb_detect_encoding;
 use function mb_stripos;
 use function mb_strpos;
 
 /**
  * Validates if the input can be found in a defined array or string.
  *
- * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
@@ -74,9 +73,7 @@ final class In extends AbstractRule
             return $input == $this->haystack;
         }
 
-        $inputString = (string) $input;
-
-        return mb_stripos($this->haystack, $inputString, 0, (string) mb_detect_encoding($inputString)) !== false;
+        return mb_stripos($this->haystack, (string) $input) !== false;
     }
 
     /**
@@ -92,8 +89,6 @@ final class In extends AbstractRule
             return $input === $this->haystack;
         }
 
-        $inputString = (string) $input;
-
-        return mb_strpos($this->haystack, $inputString, 0, (string) mb_detect_encoding($inputString)) !== false;
+        return mb_strpos($this->haystack, (string) $input) !== false;
     }
 }
